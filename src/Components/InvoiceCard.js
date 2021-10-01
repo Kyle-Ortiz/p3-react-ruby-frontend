@@ -1,6 +1,6 @@
 import React from 'react'
 
-function order_search() {
+function InvoiceCard() {
      return (
           <div>
                
@@ -8,4 +8,4 @@ function order_search() {
      )
 }
 
-export default order_search
+export default InvoiceCard
