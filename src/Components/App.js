@@ -3,6 +3,7 @@ import CustomerPage from './CustomerPage'
 import FakeNav from './fake-nav'
 import OrdersPage from './OrdersPage'
 import InvoicePage from './InvoicePage'
+import {useState,useEffect} from 'react'
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,6 +12,15 @@ import {
 
 
 function App() {
+  useEffect(() => {
+    fetch("http://localhost:9292/customers")
+    .then((r) => r.json())
+    .then((data) => {
+      setCustomerData(data);
+      console.log(data);
+    })
+}, [])
+  const [customerData, setCustomerData] = useState([])
   return (
     <Router>
       <div className="App">
@@ -20,10 +30,10 @@ function App() {
             <InvoicePage />
           </Route>
           <Route path="/orders">
-            <OrdersPage />
+            <OrdersPage customers={customerData} />
           </Route>
           <Route path="/customers">
-            <CustomerPage />
+            <CustomerPage customerData={customerData} setCustomerData={setCustomerData}/>
           </Route>
           <Route path="/">
             <CustomerPage />

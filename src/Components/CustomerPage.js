@@ -2,8 +2,7 @@ import React from 'react'
 import CustomerCard from './customer_card'
 import {useState, useEffect} from 'react'
 
-function CustomerPage() {
-     const [customerData, setCustomerData] = useState([])
+function CustomerPage({customerData,setCustomerData}) {
      const [newCustomerName, setNewCustomerName] = useState("")
      const [newCustomerEmail, setNewCustomerEmail] = useState("")
      const [newCustomerPhone, setNewCustomerPhone] = useState("")
@@ -11,16 +10,6 @@ function CustomerPage() {
      const filledCustomerCards = customerData.map((customer)=> {
           return <CustomerCard key={customer.id} customerDelete={customerDelete} customer={customer} customerName={customer.full_name} customerEmail={customer.email} customerPhone={customer.phone_number}/>
         })
-        
-     
-     useEffect(() => {
-         fetch("http://localhost:9292/customers")
-         .then((r) => r.json())
-         .then((data) => {
-           setCustomerData(data);
-           console.log(data);
-         })
-     }, [])
 
      function customerAdd(e) {
           e.preventDefault();

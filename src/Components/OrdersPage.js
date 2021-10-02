@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 
-function OrdersPage(props) {
+function OrdersPage({customers}) {
      const[ordersData, setOrdersData] = useState([])
      useEffect(() => {
           fetch("http://localhost:9292/orders")
@@ -15,9 +15,11 @@ function OrdersPage(props) {
       const locations = ["","back","left arm", "right arm","front"];
       const status = ["","Ready to print","Printing","Completed","Shipped","Delivered"];
       const filledOrderCards = ordersData.map((order)=> {
+          const orderCustomer = customers.find((customer)=> customer.id === order.customer_id)
+          const customerName = orderCustomer.full_name
           return <div key={order.id}>
                     <h4>Order #{order.id}</h4>
-                    <p>This order is for: {}</p>
+                    <p>This order is for: {customerName}</p>
                     <p>Shirt Color: {order.color}</p>
                     <p>Print Color: {order.print_color}</p>
                     <p>Print Location: {locations[order.print_location]}</p>
