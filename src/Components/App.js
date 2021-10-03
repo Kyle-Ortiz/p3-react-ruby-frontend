@@ -12,15 +12,16 @@ import {
 
 
 function App() {
+  const [customerData, setCustomerData] = useState([])
+
   useEffect(() => {
     fetch("http://localhost:9292/customers")
     .then((r) => r.json())
     .then((data) => {
       setCustomerData(data);
       console.log(data);
-    })
+    });
 }, [])
-  const [customerData, setCustomerData] = useState([])
   return (
     <Router>
       <div className="App">

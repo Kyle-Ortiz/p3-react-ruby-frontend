@@ -1,6 +1,6 @@
 import React from 'react'
 import CustomerCard from './customer_card'
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 
 function CustomerPage({customerData,setCustomerData}) {
      const [newCustomerName, setNewCustomerName] = useState("")
