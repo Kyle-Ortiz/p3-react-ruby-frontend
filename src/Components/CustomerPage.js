@@ -57,13 +57,14 @@ function CustomerPage({customerData,setCustomerData}) {
 
      return (
           <div>
-               {filledCustomerCards}
-               <form action="submit" onSubmit={customerAdd}>
+            <form action="submit" onSubmit={customerAdd}>
                     <input type="text" placeholder="Full name" value={newCustomerName} onChange={customerNameHandler}/>
                     <input type="text" placeholder="Email" value={newCustomerEmail} onChange={customerEmailHandler}/>
                     <input type="text" placeholder="Phone Number" value={newCustomerPhone} onChange={customerPhoneHandler}/>
                     <button>New Customer</button>
-               </form>
+            </form>
+               {filledCustomerCards}
+               
           </div>
      )
 }

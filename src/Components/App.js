@@ -13,12 +13,14 @@ import {
 
 function App() {
   const [customerData, setCustomerData] = useState([])
+  const [fetchChecker, setFetchChecker] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:9292/customers")
     .then((r) => r.json())
     .then((data) => {
       setCustomerData(data);
+      setFetchChecker(true);
       console.log(data);
     });
 }, [])
@@ -31,13 +33,13 @@ function App() {
             <InvoicePage />
           </Route>
           <Route path="/orders">
-            <OrdersPage customers={customerData} />
+            {fetchChecker ? <OrdersPage customers={customerData} /> : "Loading.."}
           </Route>
           <Route path="/customers">
             <CustomerPage customerData={customerData} setCustomerData={setCustomerData}/>
           </Route>
           <Route path="/">
-            <CustomerPage />
+            <CustomerPage customerData={customerData} setCustomerData={setCustomerData}/>
           </Route>
         </Switch>
         

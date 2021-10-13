@@ -9,8 +9,6 @@ function CustomerCard({customerName,customerEmail,customerPhone,customerDelete,c
                <p>{customerEmail}</p>
                <p>{customerPhone}</p>
                <div className="button-group">
-                    <Button variant="outline-primary" className="card-buttons">Orders</Button>
-                    <Button variant="outline-warning" className="card-buttons">Update Info</Button>
                     <Button variant="outline-danger" className="card-buttons" onClick={() => customerDelete(customer.id)}>Remove</Button>
                </div>
           </div>

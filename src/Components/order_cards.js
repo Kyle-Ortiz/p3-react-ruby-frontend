@@ -5,6 +5,9 @@ function OrderCards({ordersData,setOrdersData,customers}) {
      const status = ["","Ready to print","Printing","Completed","Shipped","Delivered"];
      const filledOrderCards = ordersData.map((order)=> {
           const orderCustomer = customers.find((customer)=> customer.id === order.customer_id)
+          if (!orderCustomer){
+               debugger
+          }
           const customerName = orderCustomer.full_name
           return <div key={order.id}>
                     <h4>Order #{order.id}</h4>
